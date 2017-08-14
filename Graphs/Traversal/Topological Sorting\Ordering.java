@@ -12,9 +12,9 @@ public class Main
 
     public static void main(String[] args)
     {
-        usingDfsOnly();
+        usingDfsOnly(); //Standard Tarjan Toplogical Sort algorithm
         System.out.println();
-        usingDfsAndInDegreeArray();
+        usingDfsAndInDegreeArray(); //Kahn's algorithm in Topological Sorting
     }
 
     static Stack<Integer> ans;
