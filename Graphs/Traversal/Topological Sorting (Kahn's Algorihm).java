@@ -55,7 +55,7 @@ public class Main
 
             for (int next_node : graph.adjList[current_node])
             {
-                if (--inDeg[next_node] == 0)
+                if (--inDeg[next_node] == 0 && !graph.visited[next_node])
                 {
                     queue.add(next_node);
                     graph.visit(next_node);
