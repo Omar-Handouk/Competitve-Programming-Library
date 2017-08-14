@@ -29,10 +29,12 @@ public class Main
             graph.addEdge(u ,v);
         }
 
+        ans = new Vector<>();
+
         KahnsAlgorithm();
     }
 
-    static Vector<Integer> ans = new Vector<>();
+    static Vector<Integer> ans;
 
     public static void KahnsAlgorithm()
     {
@@ -41,7 +43,7 @@ public class Main
 
         for (int i = 0 ; i < vertices ; i++)
         {
-            if (!graph.visited[i] && inDeg[i] == 0)
+            if (!graph.isVisited(i) && inDeg[i] == 0)
             {
                 queue.add(i);
                 graph.visit(i);
@@ -53,9 +55,9 @@ public class Main
             int current_node = queue.poll();
             ans.add(current_node);
 
-            for (int next_node : graph.adjList[current_node])
+            for (int next_node : graph.edgeList(current_node))
             {
-                if (--inDeg[next_node] == 0 && !graph.visited[next_node])
+                if (--inDeg[next_node] == 0 && !graph.isVisited(next_node))
                 {
                     queue.add(next_node);
                     graph.visit(next_node);
@@ -99,6 +101,16 @@ class Graph
     public void clearVisit()
     {
         Arrays.fill(visited, false);
+    }
+
+    public boolean isVisited(int v)
+    {
+        return visited[v];
+    }
+
+    public ArrayList<Integer> edgeList(int v)
+    {
+        return adjList[v];
     }
 }
 
