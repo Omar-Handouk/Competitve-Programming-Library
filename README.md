@@ -3,7 +3,7 @@
 ***Disclaimer***
 1) This library will hopefully be updated as time passes, but ultimately it should
 not be considered as perfect.
-2) The implementations do not have complexity analysis as there are far two much algorithms to cover.
+2) Not all implementations have complexity analysis due to the fact the some algorithms are simple, in a nutshell Asymptotic analysis for Time complexity and Memory complexity is only supplied in more harder and complex algorithms. 
 
 ***Aim for the library***
 This library is aimed to help those who are struggling with algorithmic implementations,
