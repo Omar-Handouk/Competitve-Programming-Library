@@ -7,6 +7,6 @@ not be considered as perfect.
 
 ***Aim for the library***
 This library is aimed to help those who are struggling with algorithmic implementations,
-and to serve as a reference in programming contests and finally its serves to help me practice my implementation skill.
+,serve as a reference in programming contests, and help me practice my implementation skill.
 
 Thank You.
