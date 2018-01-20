@@ -63,7 +63,9 @@ public class LIS_In_NlogN {
                 high = middle - 1;
         }
 
-        return -1; //This state is never reached since we are sure that the key is between index 0 ---> Len "Last index that is occupied in temp"
+        return -1; 
+        /*This state is never reached since we are sure that the key is between index 0 ---> Len 
+        "Last index that is occupied in temp"*/
     }
 
     public int LIS()
