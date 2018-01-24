@@ -92,8 +92,6 @@ public class Max_2D_Range_Sum {
 
     public static int max1Dkadane(int[] arr)
     {
-        int[] Accumulate = new int[arr.length];
-
         int max = 0;
         int currSum = 0;
 
