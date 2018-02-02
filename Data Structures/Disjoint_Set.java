@@ -11,6 +11,7 @@ public class Disjoint_Set {
         Parent = new int[Members];
         setSize = new int[Members];
         Rank = new int[Members];
+        setCount = Members;
         initialize(Members);
     }
 
