@@ -4,6 +4,7 @@
  * https://www.geeksforgeeks.org/sqrt-square-root-decomposition-technique-set-1-introduction/
  * https://github.com/AhmadElsagheer/Competitive-programming-library/blob/master/data_structures/SQRT_Decomposition.java
  * https://www.topcoder.com/community/data-science/data-science-tutorials/range-minimum-query-and-lowest-common-ancestor/#Introduction
+ * @Special_Thanks: Ahmad El-Sagheer and the help of his Competitve programming library.
  */
 
 public class Square_Root_Decomposition {
