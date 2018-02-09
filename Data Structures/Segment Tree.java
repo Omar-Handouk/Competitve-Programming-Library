@@ -14,7 +14,7 @@ package Data_Structures;
 
 /**
  * Properties of this implementation
- * This segment tree is implement using the lazy propagation technique.
+ * This segment tree is implemented using the lazy propagation technique.
  * @Space_Complexity: O(2 * N - 1), where N is power of 2. (Applies for both tree and lazy arrays)
  * @methods_&_Time_Complexities:
  * findSize, O(Log(N))
