@@ -1,52 +1,71 @@
 package Data_Structures;
-
 /**
  * @Resources_Used:
  * https://www.topcoder.com/community/data-science/data-science-tutorials/range-minimum-query-and-lowest-common-ancestor/#Sparse_Table_(ST)_algorithm
  * https://github.com/AhmadElsagheer/Competitive-programming-library/blob/master/data_structures/SparseTable.java
- * @Special_Thanks: Ahmad El-Sagheer
+ * https://github.com/mission-peace/interview/blob/master/src/com/interview/misc/SparseTableRangeMinimumQuery.java
+ * https://www.youtube.com/watch?v=c5O7E_PDO4U
+ * @Special_Thanks: Ahmad El-Sagheer & Tushar Roy
  */
+public class SparseTable
+{
+    private int arr[];
+    private int table[][];
+    private int arrSize;
+    private int blocksNum;
 
-public class Sparse_Table {
-
-    int arr[];
-    int lookup[][];
-    int arr_size;
-    int block_num;
-
-    public Sparse_Table(int arr[])
+    public SparseTable(int arr[])
     {
         this.arr = arr;
-
-        arr_size = arr.length;
-        block_num = (int) Math.floor(Math.log(arr_size) / Math.log(2)) + 1;
-
-        lookup = new int[arr_size][block_num];
-
-        this.pre_process();
+        arrSize = arr.length;
+        this.preProcess();
     }
 
-    private void pre_process()
+    private void preProcess()
     {
-        for (int i = 0; i < arr_size; ++i)
-            lookup[i][0] = i;
+        blocksNum = (int) Math.floor(Math.log(arrSize) / Math.log(2)) + 1;
 
+        table = new int[arrSize][blocksNum];
 
-        for (int j = 1; (1 << j) <= arr_size; ++j)
-            for (int i = 0; i + (1 << j) - 1 < arr_size; ++i)
-                if (arr[lookup[i][j - 1]] < arr[lookup[i + (1 << (j - 1))][j - 1]])
-                    lookup[i][j] = lookup[i][j-1];
-                else
-                    lookup[i][j] = lookup[i+(1<<(j-1))][j-1];
+        for (int i = 0 ; i < arrSize ; ++i)
+            table[i][0] = i;
+
+        for (int j = 1 ; (1 << j) <= arrSize ; ++j)
+        {
+            for (int i = 0 ; i + (1 << j) - 1 < arrSize ; ++i)
+            {
+                func(i, j);
+            }
+        }
+    }
+
+    private void func(int i, int j)
+    {
+        //Minimization Function
+        int nextLogarithm = i + (1 << (j - 1));
+
+        if (arr[table[i][j - 1]] <= arr[table[nextLogarithm][j - 1]])
+            table[i][j] = table[i][j - 1];
+        else
+            table[i][j] = table[nextLogarithm][j - 1];
     }
 
     public int query(int i, int j)
     {
-        int block = (int) Math.floor(Math.log(j - i + 1) / Math.log(2));
+        int range = j - i + 1;
+        int block = (int) Math.floor(Math.log(range) / Math.log(2));
+        int remElements = j + 1 - (1 << block);
 
-        if (arr[lookup[i][block]] <= arr[lookup[j- (1 << block) + 1][block]])
-            return lookup[i][block];
+        return queryFunc(block, remElements, i);
+
+    }
+
+    private int queryFunc(int block, int remElements, int i)
+    {
+        //Minimization function
+        if (arr[table[i][block]] <= arr[table[remElements][block]])
+            return table[i][block];
         else
-            return lookup[j - (1 << block) + 1][block];
+            return table[remElements][block];
     }
 }
