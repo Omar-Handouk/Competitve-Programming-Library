@@ -1,9 +1,9 @@
 package Mathmatics;
 
 public class Generating_Subsets {
-    
+
     //Complexity O(2^n)
-    
+
     public void generate(int arr[])
     {
         for (int i = 1 ; i < (1 << arr.length) ; ++i)
@@ -11,7 +11,7 @@ public class Generating_Subsets {
             for (int j = 0 ; j < arr.length ; ++j)
             {
                 if ((i & (1 << j)) != 0)
-                    System.out.print(arr[j] + " ");
+                    func(arr[j]);
             }
 
             System.out.println();
@@ -20,6 +20,6 @@ public class Generating_Subsets {
 
     private void func(int num)
     {
-        System.out.println(num);
+        System.out.print(num + " ");
     }
 }
