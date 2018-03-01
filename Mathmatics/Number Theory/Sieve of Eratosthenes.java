@@ -6,36 +6,38 @@ public class Main {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         int range = in.nextInt();
 
-        boolean[] unfilteredPrimes = sieve(range);
+        ArrayList<Integer> primes = sieve(range);
 
-        ArrayList<Integer> primes = new ArrayList<>();
-        for (int i = 0 ; i <= range ; i++)
-            if (unfilteredPrimes[i])
-                primes.add(i);
-
-        //System.out.println(primes.toString());
+        System.out.println(Arrays.toString(primes.toArray()));
     }
 
-    static boolean[] sieve(int range){
-
+    public static ArrayList<Integer> sieve(int range) {
         boolean[] isPrime = new boolean[range + 1];
         Arrays.fill(isPrime, true);
 
-        isPrime[0] = isPrime[1] = false;
+        isPrime[0] = false;
+        isPrime[1] = false;
 
-        for (int i = 2 ; i * i <= range ; i++){
+        for (int i = 4; i <= range; i += 2)
+            isPrime[i] = false;
 
-            if (isPrime[i]){
-                for (int j = i ; i * j <= range ; j++)
+        for (int i = 3; i * i <= range; i += 2) {
+            if (isPrime[i]) {
+                for (int j = i; i * j <= range; j += 2)
                     isPrime[i * j] = false;
             }
         }
 
-        return isPrime;
-    }
+        ArrayList<Integer> primes = new ArrayList<>();
+        for (int i = 0; i <= range; ++i) {
+            if (isPrime[i])
+                primes.add(i);
+        }
 
+        return primes;
+    }
 }
