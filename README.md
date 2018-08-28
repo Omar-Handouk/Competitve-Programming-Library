@@ -10,3 +10,4 @@ This library is aimed to help those who are struggling with algorithmic implemen
 ,serve as a reference in programming contests, and help me practice my implementation skill.
 
 Thank You.
+https://img.shields.io/badge/Phase-Front--End%20Development-purple.svg
